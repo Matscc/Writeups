@@ -1,3 +1,3 @@
 # Writeups
 
-- Repositórios de Writeups feitos em CTFs e labs.(tryHackMe, Hack The Box...)
+- Repositórios de Writeups feitos em CTFs e labs.(TryHackMe, Hack The Box...)
