@@ -19,7 +19,7 @@ Com a porta Telnet exposta, foi realizada uma tentativa de conexão remota.(coma
 - Foi possível autenticar sem credenciais adequadas, somente utilizando o login "root".
 - A falha permitiu acesso direto ao sistema
 
-Após o acesso, com o listamento de arquivos, foi possível encontrar o arquivo "flag.txt" , finalizando assim o CTF.
+Após o acesso, com o listamento de arquivos foi possível encontrar o arquivo "flag.txt" , finalizando assim o CTF.
 
 ---
 
