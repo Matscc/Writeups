@@ -1,6 +1,6 @@
 # Máquina: Meow (Hack The Box)
 
-## 🔍 Enumeração
+## Enumeração
 Com o endereço da máquina disponível, foi realizada a enumeração dos serviços em execução.
 
 - Utilização do Nmap para identificação de portas e serviços (comando varredura simples: nmap -sV target ip)
@@ -13,7 +13,7 @@ A enumeração indicou a presença do serviço de acesso remoto configurado de f
 
 ---
 
-## 🧪 Exploração
+## Exploração
 Com a porta Telnet exposta, foi realizada uma tentativa de conexão remota.(comando: telnet target ip)
 
 <img width="436" height="195" alt="telnet login" src="https://github.com/user-attachments/assets/74f3662d-89a7-4c4d-8057-a8257694cac8" />
@@ -31,13 +31,3 @@ Após o acesso, com o listamento de arquivos foi possível encontrar o arquivo "
 
 ---
 
-## 🛠 Ferramentas Utilizadas
-- Nmap
-- Telnet
-
----
-
-## 📚 Aprendizados
-- Riscos do uso de Telnet sem configuração adequada
-- Importância de restringir acessos remotos
-- Necessidade de desabilitar serviços inseguros em produção
