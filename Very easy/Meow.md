@@ -3,7 +3,11 @@
 ## Enumeração
 Com o endereço da máquina disponível, foi realizada a enumeração dos serviços em execução.
 
-- Utilização do Nmap para identificação de portas e serviços (comando varredura simples: nmap -sV target ip)
+- Utilização do Nmap para identificação de portas e serviços (comando varredura simples:-sV )
+```bash
+nmap -sV <target ip>
+```
+  
 - Identificação da porta 23/TCP aberta
 - Serviço Telnet em execução
 ** Telnet é um protocolo de rede que permite o acesso remoto a outro computador, inseguro por transmitir dados sem criptografia.
@@ -14,7 +18,7 @@ A enumeração indicou a presença do serviço de acesso remoto configurado de f
 ---
 
 ## Exploração
-Com a porta Telnet exposta, foi realizada uma tentativa de conexão remota.(comando: telnet target ip)
+Com a porta Telnet exposta, foi realizada uma tentativa de conexão remota(comando: telnet target ip).
 
 <img width="436" height="195" alt="telnet login" src="https://github.com/user-attachments/assets/74f3662d-89a7-4c4d-8057-a8257694cac8" />
 
@@ -30,4 +34,7 @@ Após o acesso, com o listamento de arquivos foi possível encontrar o arquivo "
 
 
 ---
+
+## Conclusão
+A máquina meow apresenta uma falha básica de configuração ao expor o serviço telnet com credenciais padrão, permitindo o acesso não autorizado ao sistema. A ausência de uma auenticação possibilita que um atacante obtenha acesso direto ao shell da máquina e leia arquivos sensíveis.
 
