@@ -17,7 +17,7 @@ porta 80 - Rodando o serviço http.
 Com essas informações, eu comecei a investigar a página web online com o ip da máquina. Entrando na página web, descobri que ela se tratava sobre uma dashboard de análise e segurança de rede e na aba "Security Snapshot" estáva disponível arquivos pcap que continham gravaçôes de tráfego de rede, mas para o ID que eu estava acessando, o tráfego estava vazio.
 <img width="1920" height="997" alt="pagina web id 10" src="https://github.com/user-attachments/assets/01681f77-f833-4fb8-8199-602cd361beb6" />
 
-Entretando, consegui identificar uma vulnerabilidade "IDOR" que me permitia navegar entre os outros paineis do "Security Snapshot" somente alterando o ID na URL da página.  
+Entretando, consegui identificar uma vulnerabilidade "IDOR" que me permitia navegar entre painéis de outros usuários no "Security Snapshot" somente alterando o ID na URL da página.  
 <img width="448" height="40" alt="pagina web id 10" src="https://github.com/user-attachments/assets/f8de43ad-e6d2-4609-88f5-de3c6b866560" />
 
 ## Exploração
