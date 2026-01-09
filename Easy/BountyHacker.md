@@ -39,6 +39,8 @@ O hydra consiguiu indentificar a senha que permite o login com o user "lin', o q
 
 -consegui a primeira flag "user.txt'.
 
+## Escalação de privilégios
+
 O usuário "lin", era um suário sudo, então fui checar suas permissões como sudo, para analisar como eu conseguiria me tornar root no sistema.  
 ````bash
 sudo -l
