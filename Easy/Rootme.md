@@ -41,7 +41,7 @@ O que nos revelou que a flag estava em /var/www/user.txt, dando um cat neste cam
 
 ## Escalação de privilégios
 Já com o "user.txt" obtido, precisava da segunda flag "root.txt" que possivelmente estava no diretório root, para isso era necessário conseguirmos acesso ao shell como root.  
-Procurei por binários que tinham o bit SUID(permissão que faz com que o arquivo seja executado com o UID do dono dele, não do usuário que xecutou), o que nos permitira explorar alguma vulnerabilidade:
+Procurei por binários que tinham o bit SUID(permissão que faz com que o arquivo seja executado com o UID do dono dele, não do usuário que xecutou), o que nos permitiria explorar alguma vulnerabilidade:
 ````bash
 find / -perm /4000 2> /dev/null
 ````
