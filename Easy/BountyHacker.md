@@ -50,7 +50,7 @@ Descobri que o usuário tem a permissão de executar o binário "tar" como root.
 
 <img width="965" height="111" alt="perm" src="https://github.com/user-attachments/assets/692405b0-9b71-4444-a752-a60b69e61cb2" />
 
--O tar é um programa de de compactação de extração de arquivos, mas quando tem a permissão de rodar como root ele pode ser abusado para executar comandos. O tar tem a função  "checpoint-action" que permite executar comandos, o que podemos eplorar para alcançar o root.  
+-O tar é um programa de compactação e extração de arquivos, mas quando tem a permissão de rodar como root ele pode ser abusado para executar comandos. O tar tem a função  "checpoint-action" que permite executar comandos, o que podemos eplorar para alcançar o root.  
 Acessando o GTFObins encontrei um script tar que utiliza a função checkpoint para nos disponibilizar um shell como root:  
 ````bash
 sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
