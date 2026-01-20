@@ -68,8 +68,24 @@ Abri a porta "8000" na minha máquina com o netcat e acessei o caminho para roda
 Já no sistema, explorei para encontrar a segunda flag, e encontrei o diretório do usuário "robot" mas eu não tinha permissão para ler o arquivo. No diretório robot, também havia uma senha em formato md5, então precisei descodificar a senha,(isso pode ser feito em páginas presentes na internet). já com a senha decodificada, alternei para o usuário "robot" e finalmente consegui ler a segunda flag do CTF.  
 
 ## Escalação de privilégios
+Agora, estava em busca de algum binário que me permitia executar como root, para realizar essa busca, procurei binários com o bit SUID, para checar se havia algo explorável:
+```bash
+find / -perm /4000 2> /dev/null
+```
+Com a busca, foi revelado que o nmap tinha o bit SUID ativado, o que me permitia explorar.  
 
+(IMAGE)
 
+Acessei o GTFObins e procurei por alguma funcionalidade ou script nmap que eu poderia utilizar para obter um shell root, e descobri que o modo interativo do nmap me permite gerar um shell, como o nmap tem permissão SUID, ele rodará esse shell como root.  
+
+(IMAGE)
+```bash
+nmap --interactive
+!sh
+```
+Assim, consegui acesso root ao sistema, acessei o diretório "/root" e encontrei a terceita e última flag do CTF, finalizando essa máquina com sucesso.
+
+## Conclusão
 
 
 
