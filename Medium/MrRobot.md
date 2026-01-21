@@ -74,11 +74,13 @@ find / -perm /4000 2> /dev/null
 ```
 Com a busca, foi revelado que o nmap tinha o bit SUID ativado, o que me permitia explorar.  
 
-(IMAGE)
+<img width="429" height="274" alt="nmapvuln robot" src="https://github.com/user-attachments/assets/10d66d2e-e4de-4187-9f95-827c3705d4d0" />
+
 
 Acessei o GTFObins e procurei por alguma funcionalidade ou script nmap que eu poderia utilizar para obter um shell root, e descobri que o modo interativo do nmap me permite gerar um shell, como o nmap tem permissão SUID, ele rodará esse shell como root.  
 
-(IMAGE)
+<img width="1110" height="600" alt="gtfobins robot" src="https://github.com/user-attachments/assets/ec801913-a228-4d03-a0c2-4990b3061a94" />
+
 ```bash
 nmap --interactive
 !sh
@@ -87,7 +89,15 @@ Assim, consegui acesso root ao sistema, acessei o diretório "/root" e encontrei
 
 ## Conclusão
 
+A máquina Mr. Robot apresenta uma cadeia de falhas de segurança que, quando combinadas, permitem o comprometimento completo do sistema. O primeiro problema crítico está na aplicação web, que expõe informações sensíveis e permite a enumeração de usuários por meio de ferramentas especializadas, como o Hydra. A utilização de credenciais fracas e a ausência de mecanismos eficazes de proteção contra enumeração e força bruta tornam o acesso inicial relativamente simples.
 
+Outro ponto grave é a má configuração do ambiente WordPress, onde usuários administrativos podem ser descobertos e explorados sem restrições adequadas, evidenciando a falta de boas práticas como autenticação forte, limitação de tentativas de login e ocultação de informações sensíveis da aplicação.
+
+Após o acesso ao sistema, a máquina demonstra falhas críticas de configuração no sistema operacional, especialmente relacionadas a permissões inadequadas. A presença de binários com o bit SUID configurado de forma insegura permite que usuários comuns executem comandos com privilégios elevados, o que resulta diretamente na escalação de privilégios até o nível root.
+
+Esses problemas evidenciam uma ausência de princípios básicos de segurança, como o princípio do menor privilégio, a correta gestão de permissões e o hardening do sistema. Em um ambiente real, falhas desse tipo poderiam levar à perda total de controle do servidor, comprometimento de dados sensíveis e uso da infraestrutura para ataques a terceiros.
+
+Portanto, a máquina Mr. Robot reforça como vulnerabilidades simples — quando não mitigadas — podem ser encadeadas para gerar um impacto crítico, destacando a importância de boas práticas tanto no desenvolvimento de aplicações web quanto na configuração segura do sistema operacional.
 
 
 
