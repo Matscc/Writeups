@@ -74,7 +74,11 @@ nc -lvnp 789
 Após um minuto, consegui acesso root na máquina alvo, acessei o diretório "/root" e encontrei a segunda e última flag do CTF, finalizando esta máquina com sucesso.
 
 ## Conclusão
+A máquina StartUp apresenta uma cadeia de vulnerabilidades clássicas, porém extremamente relevantes no contexto de segurança real. A exploração demonstra como falhas simples de configuração, quando combinadas, podem resultar em comprometimento total do sistema.
 
+O acesso inicial evidencia a ausência de controles adequados sobre serviços expostos e permissões de arquivos, permitindo que um atacante obtenha execução de código com privilégios limitados. A partir desse ponto, a escalada de privilégios ocorre devido a um cronjob executado como root que faz uso de scripts armazenados em diretórios graváveis por usuários não privilegiados. Essa falha configura um cenário crítico de execução arbitrária de comandos com privilégios elevados, um dos vetores mais perigosos em ambientes Linux.
+
+A possibilidade de modificar o script chamado automaticamente pelo cronjob demonstra a falta de segregação de permissões e de validação da integridade dos arquivos executados por tarefas agendadas. Em um ambiente real, esse tipo de erro permitiria não apenas a obtenção de um shell root, mas também a instalação de backdoors, alteração de usuários do sistema e comprometimento persistente do servidor.
 
 
 
