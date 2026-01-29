@@ -79,4 +79,11 @@ Executei o  "backup.pl" como sudo e consegui um shell como root.
 
 Já como root, entrei no diretório "/root", encontrando a segunda e última flag do ctf "root.txt", finalizando a máquina com sucesso.
 ## Conclusão 
+A máquina LazyAdmin demonstra de forma clara como uma sequência de pequenas falhas de segurança pode resultar no comprometimento completo de um sistema. A exploração iniciou-se a partir de uma enumeração adequada dos serviços expostos, com destaque para a aplicação web vulnerável, que possibilitou o acesso inicial ao servidor por meio de credenciais fracas e funcionalidades mal configuradas.
+
+Após a obtenção do acesso inicial, foi possível identificar arquivos sensíveis contendo credenciais, o que evidencia falhas graves na gestão de informações confidenciais e na separação adequada de privilégios. Esse tipo de erro é extremamente comum em ambientes reais e reforça a importância de boas práticas no armazenamento de senhas, como o uso de cofres de segredos e a aplicação correta de permissões em arquivos críticos.
+
+A etapa de escalonamento de privilégios destacou uma má configuração no uso do sudo, permitindo que comandos específicos fossem executados com privilégios elevados sem a devida restrição. Esse tipo de falha representa um risco crítico, pois transforma um acesso limitado em controle total da máquina, comprometendo completamente a confidencialidade, integridade e disponibilidade do sistema.
+
+Em um cenário real, essa combinação de vulnerabilidades poderia resultar em vazamento de dados, instalação de backdoors persistentes, movimentação lateral dentro da rede e comprometimento de outros sistemas. Dessa forma, a máquina LazyAdmin reforça a importância da enumeração minuciosa, do princípio do menor privilégio e da aplicação rigorosa de políticas de segurança, tanto no ambiente web quanto no sistema operacional.
 
