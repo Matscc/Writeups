@@ -1,11 +1,11 @@
 # 🧪 Pentest Writeups
 
-Este repositório contém writeups de máquinas resolvidas em plataformas de CTF, 
-com foco em **metodologia de pentest**, **enumeração**, **exploração** e **escalação de privilégios**.
+This repository contains writeups of machines solved on CTF platforms,  
+with a focus on pentesting methodology, enumeration, exploitation, and privilege escalation.
 
-## 📌 Estrutura dos Writeups
-- Enumeração
-- Exploração
+## 📌 Writeup Structure
+- Enumeration
+- Exploration
 - Privilege Escalation
 
-> ⚠️ Todos os labs foram resolvidos em ambientes controlados (CTF).
+> ⚠️ All labs were solved in controlled environments (CTF platforms).
