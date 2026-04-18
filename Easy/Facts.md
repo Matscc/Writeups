@@ -15,7 +15,7 @@ Logando, o painel nos revelou que o serviço web é gerenciado com o camaleon CM
   
 <img width="1440" height="615" alt="versão camaleon" src="https://github.com/user-attachments/assets/939d45df-7cb5-49f8-9a15-8a17af5626e9" />  
   
-Essa versão do cameleon CMS vulnerável a CVE-2025-2304, que nos permite escalar privilégio no CMS através de um mass assignment. Essa vulnerabilidade se da porque a função "Updated_ajax" contém um erro crítico de segurança, permitindo que um user comum atualize seu dados de perfil sem filtrar os campos que podem ser alterados, utilizando o método "permit!".  
+Essa versão do cameleon CMS é vulnerável a CVE-2025-2304, que nos permite escalar privilégio no CMS através de um mass assignment. Essa vulnerabilidade existe porque a função "Updated_ajax" contém um erro crítico de segurança, permitindo que um user comum atualize seu dados de perfil sem filtrar os campos que podem ser alterados, utilizando o método "permit!".  
   
 ```bash
 @user.update(params[:password].permit!)
@@ -39,8 +39,6 @@ Investigando o serviço, encontrei uma private key que me ajudaria a logar no se
 Essa private key exigia uma senha para conexão,então utilizei o ssh2john para transformar em hash legível para o john crackear, crackeando a senha e conseguindo acesso a máquina alvo via ssh.  
   
 <img width="1440" height="370" alt="john" src="https://github.com/user-attachments/assets/1ba9311a-987b-40f9-b750-a3884244f6cf" />  
-
-  
   
 <img width="584" height="507" alt="ssh" src="https://github.com/user-attachments/assets/170e1b6d-a5fd-483c-9aac-31d6b7f75a48" />  
   
@@ -53,7 +51,7 @@ Após descobrir a user flag, dei um "sudo -l" para encontrar os binários que o 
   
 <img width="610" height="97" alt="sudo -l" src="https://github.com/user-attachments/assets/0858fe4d-9d81-4a9b-9042-36efee0b1dc1" />  
   
-Pesquisando mais sobre binário, descobri que ele serve de automação para listar configurações do sistema, podemos costomizar um diretório com um arquivo malicioso em ruby e direcionar para o binário executar como root. Então, criei o arquivo exploit.rb com um script que da spawn em um bash que quando for executado pelo facter, me dará um bash root.  
+Pesquisando mais sobre o binário, descobri que ele serve de automação para listar configurações do sistema, podemos costomizar um diretório com um arquivo malicioso em ruby e direcionar para o binário executar como root. Então, criei o arquivo exploit.rb com um script que da spawn em um bash que quando for executado pelo facter, me dará um shell root.  
   
 ```bash
 echo 'exec "/bin/bash"' > exploit.rb
@@ -61,7 +59,7 @@ echo 'exec "/bin/bash"' > exploit.rb
   
 <img width="577" height="109" alt="root e rootflag" src="https://github.com/user-attachments/assets/d046a29b-67f0-4d3b-8ec0-7b9b9651a578" />
   
-Conseguindo um bash root, extraí a root flag, finalizando a máquina.
+Conseguindo um shell root, extraí a root flag, finalizando a máquina.
 
 
 
