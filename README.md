@@ -7,10 +7,5 @@ com foco em **metodologia de pentest**, **enumeração**, **exploração** e **e
 - Enumeração
 - Exploração
 - Privilege Escalation
-- Conclusão
-
-## 🏆 Destaques
-- **Overpass** – Falha de lógica + Cron Job PrivEsc
-- **Kenobi** – NFS + SUID + PATH Hijacking
 
 > ⚠️ Todos os labs foram resolvidos em ambientes controlados (CTF).
