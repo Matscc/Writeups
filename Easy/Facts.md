@@ -15,7 +15,7 @@ Logando, o painel nos revelou que o serviço web é gerenciado com o camaleon CM
   
 <img width="1440" height="615" alt="versão camaleon" src="https://github.com/user-attachments/assets/939d45df-7cb5-49f8-9a15-8a17af5626e9" />  
   
-Essa versão do cameleon CMS é vulnerável a CVE-2025-2304, que nos permite escalar privilégio no CMS através de um mass assignment. Essa vulnerabilidade existe porque a função "Updated_ajax" contém um erro crítico de segurança, permitindo que um user comum atualize seu dados de perfil sem filtrar os campos que podem ser alterados, utilizando o método "permit!".  
+Essa versão do cameleon CMS é vulnerável a CVE-2025-2304, que nos permite escalar privilégio no CMS através de um mass assignment. Essa vulnerabilidade existe porque a função "Updated_ajax" contém um erro crítico de segurança, permitindo que um user comum atualize seus dados de perfil sem filtrar os campos que podem ser alterados, utilizando o método "permit!".  
   
 ```bash
 @user.update(params[:password].permit!)
@@ -43,7 +43,8 @@ Essa private key exigia uma senha para conexão,então utilizei o ssh2john para 
 <img width="584" height="507" alt="ssh" src="https://github.com/user-attachments/assets/170e1b6d-a5fd-483c-9aac-31d6b7f75a48" />  
   
 Encontrei a User flag no diretório do usuário Willian:  
-<img width="386" height="130" alt="userflag" src="https://github.com/user-attachments/assets/7393c499-e90c-4fe6-8de1-2e569832e717" />  
+<img width="386" height="130" alt="userflag" src="https://github.com/user-attachments/assets/97c8e31b-ac55-4aab-84f4-76cea9bf8250" />
+
   
 ## Escalação de privilégio
 
@@ -57,9 +58,10 @@ Pesquisando mais sobre o binário, descobri que ele serve de automação para li
 echo 'exec "/bin/bash"' > exploit.rb
 ```
   
-<img width="577" height="109" alt="root e rootflag" src="https://github.com/user-attachments/assets/d046a29b-67f0-4d3b-8ec0-7b9b9651a578" />
+<img width="577" height="109" alt="root e rootflag" src="https://github.com/user-attachments/assets/6c7f5dc7-843b-4892-bbb1-fdc6c0eec38d" />
+
   
-Conseguindo um shell root, extraí a root flag, finalizando a máquina.
+Consegui o shell root e extraí a root flag, finalizando a máquina.
 
 
 
