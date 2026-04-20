@@ -26,7 +26,7 @@ Explorando os IDs, encontrei tráfego de rede presente no id "0", baixei o arqui
 
 <img width="1920" height="1044" alt="user e pass" src="https://github.com/user-attachments/assets/0062b33e-fbf7-4297-87d2-7423b3b95b55" />
 
-Com essas credenciais, consegui entrar no serviço ftp com o usuário "nathan".Dentro do serviço, consegui a primeira flag do ctf "user.txt" e consegui um arquivo linpeas.sh, que baixei para a minha máquina.  
+Com essas credenciais, consegui entrar no serviço SSH com o usuário "nathan".Dentro do serviço, consegui a primeira flag do ctf "user.txt" e consegui um arquivo linpeas.sh, que baixei para a minha máquina.  
   
 -**Os arquivos linpeas.sh possuem scripts que identificam possíveis vulnerabilidades em sistemas locais, nos permitindo escalar privilégios dentro da máquina alvo.**   
 
