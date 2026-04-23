@@ -26,7 +26,7 @@ Sabendo do CVE, interceptei as requisições ao forgot-password com o burpsuit e
 
 <img width="1108" height="505" alt="token" src="https://github.com/user-attachments/assets/91e4ebcc-c551-4df0-9a62-3a552b32b79b" />
 
-Investigando o dashboard do admin, encontrei uma api key que pode me dar permissão para interagir com o endpoint "api/v1/node-load-method/customMCP" e ter acesso ao módulo "child_process" que me permite upar um payload reverse shell .json com scrip javascript e executar sem validação (RCE). 
+Investigando o dashboard do admin, encontrei uma api key que pode me dar permissão para interagir com o endpoint "api/v1/node-load-method/customMCP" e ter acesso ao módulo "child_process" que me permite upar um payload reverse shell .json com script javascript e executar sem validação (RCE). 
 
 (Abri um listener na porta 4444 na minha máquina com o netcat.)
 
