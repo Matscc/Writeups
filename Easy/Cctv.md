@@ -42,7 +42,7 @@ ssh -L 8655:127.0.0.1:8655 mark@ip
 Para logar no serviço achei as credenciais no arquivo "/etc/motioneye/motion.conf":
 <img width="510" height="258" alt="motioneye" src="https://github.com/user-attachments/assets/46306088-c9ce-48ce-8ea2-73048d028933" />
 
-O motioneye, tem uma vulnerabilidade RCE, ele permite strings arbitrárias no campo image_file_name que são escritos diretamente em  /etc/motioneye/camera-*.conf e são interpretados como comandos shell.
+O motioneye, tem uma vulnerabilidade RCE, ele permite strings arbitrárias no campo image_file_name que são escritos diretamente em  /etc/motioneye/camera-*.conf e são interpretados como comandos shell (CVE-2025-60787).
 
 Primeiro, temos que desativar a validação no front-end que impede o uso de caracteres especiais no campo image file name:
 
